@@ -1,32 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import axios, { AxiosError } from "axios"
-
-type Quotes = {
-  _id: string,
-  content: string,
-  author: string,
-}
+import QuoteComponent, { Quote } from './Quote'
+import { useQuery } from 'react-query'
+import { getRandomQuote } from './api/quote'
+import ErrorMessage from './ErrorMessage'
+import { AxiosError } from 'axios'
 
 const App = () => {
-  const [quote, setQuote] = useState<Quotes>()
-  const [error, setError] = useState<string>("")
-
-  useEffect(() => {
-    async function fetchQuotes() {
-      try {
-        const data = await axios.get<Quotes>("https://api.quotable.io/random")
-        setQuote(data.data)
-      } catch (error) {
-        if (axios.isAxiosError(error))
-          setError(error.message)
-      }
-    }
-    fetchQuotes()
-  }, [])
-
+  const { data, error, isError, isLoading, isSuccess } = useQuery<Quote, AxiosError>('quote', getRandomQuote)
 
   return (
-    <div>App</div>
+    <div>
+      {isLoading && <p>Is Loading ...</p>}
+      {isError && <ErrorMessage error={error} />}
+      {isSuccess && <QuoteComponent quote={data} />}
+    </div>
   )
 }
 
