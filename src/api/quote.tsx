@@ -1,9 +1,7 @@
 import axios from "axios";
 import { Quote } from "../components/Quote";
 
-const request = axios.create({ baseURL: "https://api.quotable.io/" })
-
 export const getRandomQuote = async (): Promise<Quote> => {
-  const data = await request.get("random")
+  const data = await axios.get("https://api.quotable.io/random")
   return data.data
 }
