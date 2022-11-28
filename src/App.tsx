@@ -1,12 +1,11 @@
 import Quote from './components/Quote'
-import ErrorMessage from './components/ErrorMessage'
 
 const App = () => {
 
   return (
-    <div>
+    <main>
       <Quote />
-    </div>
+    </main>
   )
 }
 

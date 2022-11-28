@@ -1,6 +1,5 @@
-import { AxiosError } from "axios"
+type Props = { error: string }
 
-const ErrorMessage = (props: { error: AxiosError }) => <p>Error : {props.error.message}</p>
-
+const ErrorMessage = ({ error }: Props) => <p>Error : {error}</p>
 
 export default ErrorMessage

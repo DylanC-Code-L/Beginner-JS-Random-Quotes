@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { Quote } from "../components/Quote";
 
 const request = axios.create({ baseURL: "https://api.quotable.io/" })
