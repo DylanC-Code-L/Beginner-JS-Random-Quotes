@@ -4,7 +4,7 @@ const DateComponent = () => {
   const mm = String(today.getMonth() + 1).padStart(2, "0")
   const yyyy = today.getFullYear()
 
-  return <h1>{mm + ' / ' + dd + ' / ' + yyyy}</h1>
+  return <h1 className="date">{mm + ' / ' + dd + ' / ' + yyyy}</h1>
 }
 
 export default DateComponent
